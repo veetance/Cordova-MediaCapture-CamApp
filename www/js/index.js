@@ -1,65 +1,55 @@
-//step 01 options
-
 
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    const { DestinationType } = require("../../plugins/cordova-plugin-camera/www/CameraConstants");
-    const { EncodingType } = require("../../plugins/cordova-plugin-camera/www/CameraConstants");
-    const { resolveLocalFileSystemURI, resolveLocalFileSystemURL } = require("../../plugins/cordova-plugin-file/www/resolveLocalFileSystemURI");
 
+    const { resolveLocalFileSystemURI } = getPicture("../img/Galleree/art-o1.png");
+    
     var options = {
+        quality: 100,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        encodingType: Camera.EncodingType.JPEG,
+        mediaType: Camera.MediaType.PICTURE,
+        allowEdit: true,
+        correctOrientation: true
+    };
 
-        quality:100,
-        DestinationType: Camera.DestinationType.FILE_URI,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        encodingType: Camera.EncodingType.PNG,
-        cameraDirection: Camera.Direction.Direction.FRONT
-        
-    }
+     // step 02 create variable camera
 
-    console.log(options);  
+     var camera = document.getElementById('camBtn');
+
+     // step 03 create variable image
+ 
+ 
+     // step 04 create function to take picture
+ 
+     camera.addEventListener('click', function () {
+         navigator.camera.getPicture(onSuccess, onFail, options);
+     });
+
+       // step 05 create function onSuccess
+
+    function onSuccess(imageData) {
+        resolveLocalFileSystemURL(imageData, function (fileEntry) {
+            var myimage = fileEntry.toURL();
+            $('#viewer_image').attr('src', myimage);
+        },onError);
+        }
+    
+        // step 06 create function onFail
+    
+        function onError(message) {
+            alert('oho no! ' + message);
+        }
+
 }
 
-//step 2 take or grab a photo
-
-$("#camBtn").on("click",takePic);
-
-function takePic() {
-navigator.camera.getPicture(onSuccess, onError, options);
-
-}
-
-// step 2 success Function
-
-function onSuccess(imageData) {
-    console.log(imageData);
-}
-
-// step 3 imageData
-
-// function onSuccess(imageData) {
-//     console.log(imageData);
-//    $(".viewer_image").append("<img src='"+imageData+"'/>");
-// }
+     
 
 
-// fix of step 3 
 
-function onSuccess(imageData) {
-    // console.log(imageData);
-    resolveLocalFileSystemURL(imageData, function(fileEntry){
-        var myImage = fileEntry.toURL();
-        $(".viewer_image").append("<img src='"+myImage+"'/>");
-    }, onError);
-   
-}
 
-// step 4 error function
-
-function onError(message) {
-    alert("oh snap");
-}
 
 

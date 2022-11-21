@@ -14,12 +14,14 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-plugin-camera": "^6.0.0",
-    "cordova-plugin-file": "^7.0.0"
+    "cordova-plugin-file": "^7.0.0",
+    "cordova-plugin-media-capture": "^4.0.0"
   },
   "cordova": {
     "plugins": {
       "cordova-plugin-camera": {},
-      "cordova-plugin-file": {}
+      "cordova-plugin-file": {},
+      "cordova-plugin-media-capture": {}
     }
   }
 }
