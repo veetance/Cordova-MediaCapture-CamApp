@@ -1,14 +1,29 @@
+// make sure .CamcaptureData and .shell  hight is the same as their width of the image optimised for mobile.. for some reason in the css it is not working whan i use aspect-ratio: 1/1; 
 
-// //  function hideGallery is a function that hides .gallery on the touch or press of #camBtn using jquery
+$('.shell_span2').css('height', $('.shell_span2').width());
+$('.shell_span1').css('height', $('.shell_span1').width());
+$('.CamcaptureData').css('height', $('.CamcaptureData').width());
 
-// function hideGallery() {
-//     $('.Gallery').hide();
-//     console.log('hideGallery function called');
-// }
 
-// // call hideGallery function on click of #camBtn
+// function ExpandIMG, on the touch or press of .info-button the hight of CamcaptureData is reduced by 50% with smooth animation and smooth scroll, if the hight is 50% the hight is set to 100% with smooth animation and smooth scroll 
 
-// $('#camBtn').on('click', hideGallery);
+function ExpandIMG() {
+
+    if ($('.CamcaptureData').height() == $('.CamcaptureData').width()) {
+        $('.CamcaptureData').animate({ height: $('.CamcaptureData').width() / 2 }, 400, 'swing');
+        $('html, body').animate({ scrollTop: $('.CamcaptureData').offset().top }, 450, 'swing');
+    } else {
+        $('.CamcaptureData').animate({ height: $('.CamcaptureData').width() }, 500, 'swing');
+        $('html, body').animate({ scrollTop: $('.CamcaptureData').offset().top }, 500, 'swing');
+    }
+}
+
+// call the function on the touch or press of .info-button
+
+$('.info-button').on('click', ExpandIMG);
+
+
+
 
 
 document.addEventListener('deviceready', onDeviceReady, false);
@@ -35,9 +50,11 @@ function onDeviceReady() {
         resolveLocalFileSystemURL(imageData, function (fileEntry) {
             var myNewImage = fileEntry.toURL()
             console.log(myNewImage);
+
+            // change the img url of .CamcaptureData to myNewImage using css background-image property 
+
+            $('.CamcaptureData').css('background-image', 'url(' + myNewImage + ')');
             
-            // do something with URL, assign to src or create an html 
-            $(".viewer_image").replaceWith("<img src='" + myNewImage + "'>")
         }, onError);
 
     };
@@ -48,6 +65,8 @@ function onDeviceReady() {
  
 
 };
+
+// 
 
 
 
