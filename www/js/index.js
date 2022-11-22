@@ -1,55 +1,55 @@
 
+// //  function hideGallery is a function that hides .gallery on the touch or press of #camBtn using jquery
+
+// function hideGallery() {
+//     $('.Gallery').hide();
+//     console.log('hideGallery function called');
+// }
+
+// // call hideGallery function on click of #camBtn
+
+// $('#camBtn').on('click', hideGallery);
+
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
+    // Cordova is now initialized. Have fun!
 
-    const { resolveLocalFileSystemURI } = getPicture("../img/Galleree/art-o1.png");
-    
-    var options = {
-        quality: 100,
-        destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        encodingType: Camera.EncodingType.JPEG,
-        mediaType: Camera.MediaType.PICTURE,
-        allowEdit: true,
-        correctOrientation: true
+    var Options = {
+        quality: 80,
+        destinationType: Camera.DestinationType.FILE_URI
     };
 
-     // step 02 create variable camera
+    function takePic() {
 
-     var camera = document.getElementById('camBtn');
+    navigator.camera.getPicture(onSuccess, onError, Options) 
+    console.log(Options)
 
-     // step 03 create variable image
- 
- 
-     // step 04 create function to take picture
- 
-     camera.addEventListener('click', function () {
-         navigator.camera.getPicture(onSuccess, onFail, options);
-     });
+    };
 
-       // step 05 create function onSuccess
+    $('#camBtn').on('click', takePic);
 
     function onSuccess(imageData) {
+        console.log(imageData);
         resolveLocalFileSystemURL(imageData, function (fileEntry) {
-            var myimage = fileEntry.toURL();
-            $('#viewer_image').attr('src', myimage);
-        },onError);
-        }
+            var myNewImage = fileEntry.toURL()
+            console.log(myNewImage);
+            
+            // do something with URL, assign to src or create an html 
+            $(".viewer_image").replaceWith("<img src='" + myNewImage + "'>")
+        }, onError);
+
+    };
     
-        // step 06 create function onFail
-    
-        function onError(message) {
-            alert('oho no! ' + message);
-        }
+    function onError(message) {
+        alert("Photo not taken because" + message)
+    };
+ 
 
-}
-
-     
+};
 
 
 
-
-
+   
 

@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
 <html>
 
 <head>
     <meta charset="utf-8">
 
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src Content-Type: application/javascript 'self' data: cdvfile: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; media-src *; img-src 'self' data: content: android-webview-video-poster:; font-src 'self' data: fonts.gstatic.com; ">
+
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+
     <link rel="stylesheet" href="css/styles.css">
 
     <title>Galleree</title>
@@ -19,74 +48,71 @@
 <body>
 
     <nav class="top-nav">
-    <div class="nav-bar">
-        <div class="nav-left">
-            <div class="nav-bar_logo">
-                <div class="app-logo"></div>
+        <div class="nav-bar">
+            <div class="nav-left">
+                <div class="nav-bar_logo">
+                    <div class="app-logo"></div>
+                </div>
+                <div class="app-name">
+                    <h2>GALLEREE</h2>
+                </div>
             </div>
-            <div class="app-name">
-                <h2>GALLEREE</h2>
+            <div class="nav-bar_menu">
+                <div id="camBtn" class="nav-button material-symbols-rounded">
+                    <h3>Photo_Camera</h3>
+                </div>
             </div>
         </div>
-        <div class="nav-bar_menu">
-            <div  id="camBtn" class="nav-button material-symbols-rounded">
-                <h3>Photo_Camera</h3>
-            </div>   
-        </div>
-    </div>
     </nav>
 
 
     <div class="content-wrapper">
 
-    <section class="viewer">
+        <div class="viewer">
 
-        <div class="viewer_image">
-            <img src="/www/img/Galleree/art-01.png" alt="image">
-        </div>
-
-        <div class="viewer_info">
-
-            <div class="viewer_info_title">
-                <h1>Featured Art</h1>
+            <div class="viewer_image">
+                <div class="captureData"></div>
             </div>
 
-            <div class="viewer_info_details">
-                
-                <div class="viewer_info_details_size">
-                    <h4>Artist : Veetance</h4>
+            <div class="viewer_info">
+
+                <div class="viewer_info_title">
+                    <h1>Featured Art</h1>
                 </div>
 
+                <div class="viewer_info_details">
+
+                    <div class="viewer_info_details_size">
+                        <h4>Artist : Veetance</h4>
+                    </div>
+
+                </div>
             </div>
+
         </div>
 
-    </section>
+        <div class="Gallery">
 
-    <section class="Gallery">
+            <div class="art-work-01 shell"></div>
+            <div class="art-work-02 shell"></div>
+            <div class="art-work-03 shell"></div>
+            <div class="art-work-04 shell"></div>
+            <div class="art-work-05 shell"></div>
+            <div class="art-work-06 shell"></div>
 
-        <div class="art-work-01 shell"></div>
-        <div class="art-work-02 shell"></div>
-        <div class="art-work-03 shell"></div>
-        <div class="art-work-04 shell"></div>
-        <div class="art-work-05 shell"></div>
-        <div class="art-work-06 shell"></div>
-   
-    </section>
+        </div>
 
-   
+
 
 
     </div>
 
-    
 
 
-
-
-
-    <!-- <script src="cordova.js"></script> -->
+    <script src="cordova.js" ></script>
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/index.js"></script>
+    
 
 </body>
 
